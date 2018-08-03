@@ -1,0 +1,396 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300");
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.navbar {
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 70px 15px 70px;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .navbar-left {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .navbar-right {
+    display: flex;
+    flex-direction: row;
+
+    div {
+      margin-left: 12px;
+    }
+  }
+}
+
+.landing {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  height: 100vh;
+  width: 100%;
+  background-image: url("/landing.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 30px;
+
+  i {
+    font-size: 40px;
+    margin-bottom: 15px;
+    animation: bounce 3s infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .landing-content-details {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .show {
+    opacity: 1;
+  }
+}
+
+.emojifier {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  .emoji-project-container {
+    flex: 0.5;
+    .emoji-project {
+      animation: bigger 1s linear;
+      animation-fill-mode: forwards;
+      transform: translate(0%, 0%);
+      .emoji-cont {
+        width: 25%;
+        height: 25%;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(0%, 0%);
+        animation: emoji-bounce 750ms infinite;
+        .emoji {
+          position: absolute;
+          transform: translate(0%, 0%);
+
+          top: 50%;
+          left: 50%;
+        }
+
+        .emoji::after {
+          font-size: 12.5vmin;
+          content: "😮";
+
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          animation: rotate-emoji 750ms linear infinite,
+            change-emoji 6s -375ms linear infinite;
+        }
+      }
+      .shadow {
+        width: 25%;
+        height: 5px;
+        background: #263238;
+
+        transform: translate(-50%, -50%);
+
+        position: absolute;
+        top: 85%;
+        left: 50%;
+
+        animation: shadow-bounce 750ms linear infinite;
+      }
+      @keyframes change-emoji {
+        0% {
+          content: "😮";
+        }
+        12.5% {
+          content: "😵";
+        }
+        25% {
+          content: "😳";
+        }
+        37.5% {
+          content: "🤣";
+        }
+        50% {
+          content: "😇";
+        }
+        62.5% {
+          content: "😎";
+        }
+        75% {
+          content: "🙄";
+        }
+        87.5% {
+          content: "🤢";
+        }
+        100% {
+          content: "😮";
+        }
+      }
+
+      @keyframes rotate-emoji {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      @keyframes emoji-bounce {
+        0% {
+          transform: translate(-50%, 50%) scale(1.25, 0.75);
+          animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+        }
+        50% {
+          transform: translate(-50%, -150%) scale(1, 1);
+          animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+        }
+        100% {
+          transform: translate(-50%, 50%) scale(1.25, 0.75);
+        }
+      }
+
+      @keyframes shadow-bounce {
+        0% {
+          opacity: 0.25;
+          transform: translate(-50%, -50%) scaleX(1.5);
+          animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+        }
+        50% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scaleX(0.75);
+          animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+        }
+        100% {
+          opacity: 0.25;
+          transform: translate(-50%, -50%) scaleX(1.5);
+        }
+      }
+
+      @keyframes bigger {
+        0% {
+          height: 0vmin;
+        }
+        50% {
+          height: 25vmin;
+        }
+        100% {
+          height: 50vmin;
+        }
+      }
+    }
+  }
+  .emojifier-description {
+    flex: 0.5;
+    text-align: justify;
+    padding: 50px;
+    width: 75%;
+
+    .emojifier-description-title {
+      font-size: 2.5rem;
+      margin-bottom: 1.3rem;
+      font-weight: 550;
+    }
+
+    .emojifier-description-details {
+      font-size: 1.3rem;
+      line-height: 2rem;
+      margin-bottom: 1.6rem;
+    }
+
+    a {
+      height: 5px;
+      border-radius: 3px;
+      text-decoration: none;
+      i {
+        margin-right: 6px;
+      }
+      color: white;
+      padding: 5px 10px;
+      font-size: 1.4rem;
+      background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+      background-blend-mode: multiply;
+      border-width: 0px;
+    }
+  }
+}
+
+.at-school {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 0.4;
+
+  .at-school-description {
+    flex: 0.5;
+    text-align: justify;
+    padding: 50px;
+    width: 75%;
+
+    .at-school-description-title {
+      font-size: 2.5rem;
+      margin-bottom: 1.3rem;
+      font-weight: 550;
+    }
+
+    .at-school-description-details {
+      font-size: 1.3rem;
+      line-height: 2rem;
+      margin-bottom: 1.6rem;
+    }
+
+    a {
+      height: 5px;
+      border-radius: 3px;
+      text-decoration: none;
+      i {
+        margin-right: 6px;
+      }
+      color: white;
+      padding: 5px 10px;
+      font-size: 1.4rem;
+      background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+      background-blend-mode: multiply;
+      border-width: 0px;
+    }
+  }
+
+  .at-school-images-wrapper {
+    padding: 0px 20px;
+    flex: 0.6;
+    .at-school-images-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .cardholder {
+        perspective: 800px;
+        margin-right: -250px;
+        transition: all 0.3s linear;
+        .card {
+          background-color: transparent;
+          transform: rotateY(50deg);
+          -webkit-box-shadow: -6px 5px 13px 2px rgba(0, 0, 0, 0.25);
+          -moz-box-shadow: -6px 5px 13px 2px rgba(0, 0, 0, 0.25);
+          box-shadow: -6px 5px 13px 2px rgba(0, 0, 0, 0.25);
+          transition: all 0.3s ease;
+          color: transparent;
+          width: 300px;
+          height: 195px;
+          border-radius: 5px;
+
+          img {
+            width: 300px;
+            height: 195px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+          }
+        }
+        &:hover {
+          margin-right: 0px;
+          z-index: 100;
+
+          .card {
+            background-color: transparent;
+            transform: rotateY(0deg);
+            box-shadow: 0px 0px 36px 2px rgba(0, 0, 0, 0.25);
+            color: black;
+            width: 400px;
+            height: 295px;
+          }
+
+          img {
+            width: 400px;
+            height: 295px;
+          }
+        }
+      }
+
+      &:first-child {
+        margin-right: 0px;
+      }
+    }
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.fade-enter {
+  opacity: 0.01;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in;
+}
+
+// Galaxy S5 and Iphone 5/SE
+@media only screen and (max-width: 370px) {
+
+} 
+
+@media only screen and (min-width: 370px) {
+
+} 
+
+@media only screen and (min-width: 600px) {
+  
+} 
+
+@media only screen and (min-width: 768px) {
+  
+} 
+
+@media only screen and (min-width: 992px) {
+  
+} 
+
+@media only screen and (min-width: 1200px) {
+  
+}
