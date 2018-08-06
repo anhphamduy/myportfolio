@@ -13,14 +13,16 @@ export default class Emojfier extends React.Component {
           </div>
         </div>
         <div className="emojifier-description">
-          <div className="emojifier-description-title">Emojfier</div>
-          <div className="emojifier-description-details">
+          <div className="section-title">Emojfier</div>
+          <div className="section-details">
             Emojifier is an implementation of a sequence model in Machine
             Learning - Long Short Term Memory Networks. It will analyse the
             meaning or context of the sentence, the give that sentence an
             appropriate emoji.
           </div>
-          <a href="#"><i className="fab fa-github"></i> View projects</a>
+          <a href="https://github.com/anhphamduy/emojifier_model">
+            <i className="fab fa-github" /> View project
+          </a>
         </div>
       </div>
     );

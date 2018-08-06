@@ -5,31 +5,33 @@ export default class AtSchool extends React.Component {
     return (
       <div className="at-school">
         <div className="at-school-description">
-          <div className="at-school-description-title">@ school</div>
-          <div className="at-school-description-details">
-            Emojifier is an implementation of a sequence model in Machine
-            Learning - Long Short Term Memory Networks. It will analyse the
-            meaning or context of the sentence, the give that sentence an
-            appropriate emoji.
+          <div className="section-title">@ school</div>
+          <div className="section-details">
+            @ school is a learning management system. It is developed by a team
+            of three members using React and Flask served as the server, and me
+            myself is the team lead. @ school is aiming to be Series C startup
+            by the end of this year.
           </div>
-          <a href="#"><i className="fab fa-github"></i> View projects</a>
+          <a href="https://atschool.live/">
+            <i className="fas fa-globe" /> View product
+          </a>
         </div>
         <div className="at-school-images-wrapper">
           <div className="at-school-images-container">
             <div className="cardholder">
               <div className="card">
-                <img src="/atschool3.png" />
+                <img src="/atschool3.png" alt="one of the page website" />
               </div>
             </div>
             <div className="cardholder">
               <div className="card">
-                <img src="/atschool1.png" />
+                <img src="/atschool1.png" alt="one of the page website" />
               </div>
             </div>
 
             <div className="cardholder">
               <div className="card">
-                <img src="/atschool2.png" />
+                <img src="/atschool2.png" alt="one of the page website" />
               </div>
             </div>
           </div>

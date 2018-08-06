@@ -22,11 +22,143 @@
   font-size: large;
 }
 
+.fade-enter {
+  opacity: 0.01;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 0.3s ease-in;
+}
+
+.message-enter {
+  opacity: 0.01;
+  transform: scale(0.9) translateY(50%);
+}
+.message-enter-active {
+  opacity: 1;
+  transform: scale(1) translateY(0%);
+  transition: all 0.15s ease-out;
+}
+.message-exit {
+  opacity: 1;
+  transform: scale(1) translateY(0%);
+}
+.message-exit-active {
+  opacity: 0.01;
+  transform: scale(0.9) translateY(50%);
+  transition: all 0.15s ease-out;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes change-emoji {
+  0% {
+    content: "😮";
+  }
+  12.5% {
+    content: "😵";
+  }
+  25% {
+    content: "😳";
+  }
+  37.5% {
+    content: "🤣";
+  }
+  50% {
+    content: "😇";
+  }
+  62.5% {
+    content: "😎";
+  }
+  75% {
+    content: "🙄";
+  }
+  87.5% {
+    content: "🤢";
+  }
+  100% {
+    content: "😮";
+  }
+}
+
+@keyframes rotate-emoji {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes emoji-bounce {
+  0% {
+    transform: translate(-50%, 50%) scale(1.25, 0.75);
+    animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+  50% {
+    transform: translate(-50%, -150%) scale(1, 1);
+    animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+  }
+  100% {
+    transform: translate(-50%, 50%) scale(1.25, 0.75);
+  }
+}
+
+@keyframes shadow-bounce {
+  0% {
+    opacity: 0.25;
+    transform: translate(-50%, -50%) scaleX(1.5);
+    animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(0.75);
+    animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+  }
+  100% {
+    opacity: 0.25;
+    transform: translate(-50%, -50%) scaleX(1.5);
+  }
+}
+
+@keyframes bigger {
+  0% {
+    height: 0vmin;
+  }
+  50% {
+    height: 25vmin;
+  }
+  100% {
+    height: 50vmin;
   }
 }

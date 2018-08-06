@@ -2,81 +2,196 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300");
 body {
   font-family: "Open Sans", sans-serif;
+  overflow-x: hidden;
 }
 
 .navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
   font-size: 20px;
   background-color: rgba(255, 255, 255, 0);
-  color: black;
+  color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px 70px 15px 70px;
   transition: background-color 0.2s ease-in-out;
 }
-.navbar:hover {
-  background-color: rgba(255, 255, 255, 0.9);
+.navbar .navbar-left img {
+  width: 60px;
+  height: 60px;
+  filter: grayscale(70%);
+  border-radius: 50%;
+  margin-top: 30px;
+  margin-left: 50px;
+  transition: all 0.3s ease;
 }
-.navbar .navbar-left {
-  display: flex;
-  flex-direction: row;
+.navbar .navbar-left img:hover {
+  box-shadow: 0px 0px 10px 0.5px rgba(235, 235, 235, 0.43);
 }
 .navbar .navbar-right {
   display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-right: 50px;
+}
+.navbar .navbar-right .position-indicator {
+  display: flex;
   flex-direction: row;
 }
-.navbar .navbar-right div {
-  margin-left: 12px;
+.navbar .navbar-right .position-indicator .position-indicator-current-position {
+  font-size: 12px;
+  font-family: "Prompt";
+  font-weight: 300;
+  font-style: normal;
+  line-height: 20px;
+  margin-right: 8px;
+}
+.navbar .navbar-right .position-indicator .position-indicator-burger-menu .burger-icon {
+  width: 25px;
+  height: 1px;
+  background-color: white;
+  margin: 4px 0;
+  margin-left: auto;
+  transition: all 0.3s ease-in-out;
+}
+.navbar .navbar-right .position-indicator .position-indicator-burger-menu .burger-icon-dummy {
+  width: 30px;
+  height: 0px;
+}
+.navbar .navbar-right .position-indicator .position-indicator-burger-menu .current-icon {
+  background-color: #f6c4ce !important;
+  width: 30px;
+}
+.navbar .navbar-right .position-indicator .position-indicator-burger-menu .burger-icon:hover {
+  width: 30px;
+}
+.navbar .navbar-right .position-indicator .position-indicator-burger-menu .twitter-logo,
+.navbar .navbar-right .position-indicator .position-indicator-burger-menu .github-logo,
+.navbar .navbar-right .position-indicator .position-indicator-burger-menu .stackoverflow-logo,
+.navbar .navbar-right .position-indicator .position-indicator-burger-menu .linkedin-logo {
+  margin-top: 20px;
+  font-size: 30px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  color: #aaa;
+  background-color: rgba(255, 255, 255, 0.09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.navbar .navbar-right .position-indicator .position-indicator-burger-menu .twitter-logo:hover,
+.navbar .navbar-right .position-indicator .position-indicator-burger-menu .github-logo:hover,
+.navbar .navbar-right .position-indicator .position-indicator-burger-menu .stackoverflow-logo:hover,
+.navbar .navbar-right .position-indicator .position-indicator-burger-menu .linkedin-logo:hover {
+  background-color: white;
+  box-shadow: 0px 0px 10px 0.5px rgba(235, 235, 235, 0.43);
+  color: black;
+}
+.navbar .navbar-right .position-indicator .position-indicator-burger-menu .twitter-logo {
+  margin-top: 45px;
+}
+.navbar .navbar-right .on-white {
+  color: #000;
+}
+.navbar .navbar-right .on-white .burger-icon {
+  width: 25px;
+  height: 1px;
+  background-color: black !important;
+  margin: 4px 0;
+  margin-left: auto;
+  transition: all 0.3s ease-in-out;
+}
+.navbar .navbar-right .on-white .current-icon {
+  background-color: #f6c4ce !important;
+  width: 30px;
 }
 
 .landing {
-  position: absolute;
-  top: 0;
   z-index: -1;
-  height: 100vh;
   width: 100%;
-  background-image: url("/landing.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 100vh;
+  min-height: 500px;
+  background-color: #191c1e;
+  filter: grayscale(70%);
+  color: white;
+  font-size: 2.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
-  font-size: 30px;
+  text-align: justify;
 }
 .landing i {
   font-size: 40px;
   margin-bottom: 15px;
   animation: bounce 3s infinite;
-  opacity: 0;
   transition: opacity 0.3s ease-in-out;
+  margin-top: 100px;
 }
-.landing .landing-content-details {
+.landing .landing-content {
+  padding: 200px 100px;
+}
+.landing .landing-content .landing-content-subtitle {
+  color: rgba(255, 255, 255, 0.54) !important;
+  font-style: italic;
+  font-size: 1.3rem;
+}
+.landing .landing-content .landing-content-subtitle-dummy {
+  margin-top: 16px;
+  width: 50px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.54);
+}
+.landing .landing-content .landing-content-description {
+  width: 50%;
+}
+.landing .landing-content .Typist {
+  margin-top: 30px;
+}
+.landing .landing-content .Typist .Cursor--blinking {
+  margin-left: -8px;
+}
+.landing .not-show {
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-.landing .show {
-  opacity: 1;
 }
 
-.emojifier {
+.main-content {
+  padding: 50px;
+}
+.main-content .main-content-intro {
+  text-align: left;
+  font-size: 3rem;
+  border-bottom: 0.8px solid rgba(0, 0, 0, 0.6);
+}
+.main-content .section-title {
+  font-size: 2.5rem;
+  margin-top: 1.3rem;
+  margin-bottom: 1.6rem;
+  font-weight: 550;
+}
+.main-content .section-details {
+  font-size: 1.3rem;
+  line-height: 2rem;
+  margin-bottom: 1.6rem;
+}
+.main-content .projects .emojifier {
   display: flex;
-  flex-direction: row-reverse;
-  height: 100vh;
+  flex-direction: row;
   width: 100%;
   align-items: center;
 }
-.emojifier .emoji-project-container {
+.main-content .projects .emojifier .emoji-project-container {
+  width: 100%;
   flex: 0.5;
 }
-.emojifier .emoji-project-container .emoji-project {
+.main-content .projects .emojifier .emoji-project-container .emoji-project {
   animation: bigger 1s linear;
   animation-fill-mode: forwards;
   transform: translate(0%, 0%);
 }
-.emojifier .emoji-project-container .emoji-project .emoji-cont {
+.main-content .projects .emojifier .emoji-project-container .emoji-project .emoji-cont {
   width: 25%;
   height: 25%;
   position: absolute;
@@ -85,13 +200,13 @@ body {
   transform: translate(0%, 0%);
   animation: emoji-bounce 750ms infinite;
 }
-.emojifier .emoji-project-container .emoji-project .emoji-cont .emoji {
+.main-content .projects .emojifier .emoji-project-container .emoji-project .emoji-cont .emoji {
   position: absolute;
   transform: translate(0%, 0%);
   top: 50%;
   left: 50%;
 }
-.emojifier .emoji-project-container .emoji-project .emoji-cont .emoji::after {
+.main-content .projects .emojifier .emoji-project-container .emoji-project .emoji-cont .emoji::after {
   font-size: 12.5vmin;
   content: "😮";
   position: absolute;
@@ -99,7 +214,7 @@ body {
   left: 0;
   animation: rotate-emoji 750ms linear infinite, change-emoji 6s -375ms linear infinite;
 }
-.emojifier .emoji-project-container .emoji-project .shadow {
+.main-content .projects .emojifier .emoji-project-container .emoji-project .shadow {
   width: 25%;
   height: 5px;
   background: #263238;
@@ -109,100 +224,12 @@ body {
   left: 50%;
   animation: shadow-bounce 750ms linear infinite;
 }
-@keyframes change-emoji {
-  0% {
-    content: "😮";
-  }
-  12.5% {
-    content: "😵";
-  }
-  25% {
-    content: "😳";
-  }
-  37.5% {
-    content: "🤣";
-  }
-  50% {
-    content: "😇";
-  }
-  62.5% {
-    content: "😎";
-  }
-  75% {
-    content: "🙄";
-  }
-  87.5% {
-    content: "🤢";
-  }
-  100% {
-    content: "😮";
-  }
-}
-@keyframes rotate-emoji {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-@keyframes emoji-bounce {
-  0% {
-    transform: translate(-50%, 50%) scale(1.25, 0.75);
-    animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
-  }
-  50% {
-    transform: translate(-50%, -150%) scale(1, 1);
-    animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
-  }
-  100% {
-    transform: translate(-50%, 50%) scale(1.25, 0.75);
-  }
-}
-@keyframes shadow-bounce {
-  0% {
-    opacity: 0.25;
-    transform: translate(-50%, -50%) scaleX(1.5);
-    animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scaleX(0.75);
-    animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
-  }
-  100% {
-    opacity: 0.25;
-    transform: translate(-50%, -50%) scaleX(1.5);
-  }
-}
-@keyframes bigger {
-  0% {
-    height: 0vmin;
-  }
-  50% {
-    height: 25vmin;
-  }
-  100% {
-    height: 50vmin;
-  }
-}
-.emojifier .emojifier-description {
+.main-content .projects .emojifier .emojifier-description {
   flex: 0.5;
   text-align: justify;
-  padding: 50px;
-  width: 75%;
+  width: 50%;
 }
-.emojifier .emojifier-description .emojifier-description-title {
-  font-size: 2.5rem;
-  margin-bottom: 1.3rem;
-  font-weight: 550;
-}
-.emojifier .emojifier-description .emojifier-description-details {
-  font-size: 1.3rem;
-  line-height: 2rem;
-  margin-bottom: 1.6rem;
-}
-.emojifier .emojifier-description a {
+.main-content .projects .emojifier .emojifier-description a {
   height: 5px;
   border-radius: 3px;
   text-decoration: none;
@@ -213,34 +240,31 @@ body {
   background-blend-mode: multiply;
   border-width: 0px;
 }
-.emojifier .emojifier-description a i {
+.main-content .projects .emojifier .emojifier-description a i {
   margin-right: 6px;
 }
-
-.at-school {
-  height: 100vh;
+.main-content .projects .at-school {
   display: flex;
   flex-direction: row;
   align-items: center;
   flex: 0.4;
 }
-.at-school .at-school-description {
+.main-content .projects .at-school .at-school-description {
   flex: 0.5;
   text-align: justify;
-  padding: 50px;
   width: 75%;
 }
-.at-school .at-school-description .at-school-description-title {
+.main-content .projects .at-school .at-school-description .at-school-description-title {
   font-size: 2.5rem;
   margin-bottom: 1.3rem;
   font-weight: 550;
 }
-.at-school .at-school-description .at-school-description-details {
+.main-content .projects .at-school .at-school-description .at-school-description-details {
   font-size: 1.3rem;
   line-height: 2rem;
   margin-bottom: 1.6rem;
 }
-.at-school .at-school-description a {
+.main-content .projects .at-school .at-school-description a {
   height: 5px;
   border-radius: 3px;
   text-decoration: none;
@@ -251,24 +275,25 @@ body {
   background-blend-mode: multiply;
   border-width: 0px;
 }
-.at-school .at-school-description a i {
+.main-content .projects .at-school .at-school-description a i {
   margin-right: 6px;
 }
-.at-school .at-school-images-wrapper {
-  padding: 0px 20px;
+.main-content .projects .at-school .at-school-images-wrapper {
   flex: 0.6;
 }
-.at-school .at-school-images-wrapper .at-school-images-container {
+.main-content .projects .at-school .at-school-images-wrapper .at-school-images-container {
   display: flex;
   flex-direction: row;
   align-items: center;
+  height: 500px;
+  width: 100%;
 }
-.at-school .at-school-images-wrapper .at-school-images-container .cardholder {
+.main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder {
   perspective: 800px;
   margin-right: -250px;
   transition: all 0.3s linear;
 }
-.at-school .at-school-images-wrapper .at-school-images-container .cardholder .card {
+.main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder .card {
   background-color: transparent;
   transform: rotateY(50deg);
   -webkit-box-shadow: -6px 5px 13px 2px rgba(0, 0, 0, 0.25);
@@ -280,17 +305,17 @@ body {
   height: 195px;
   border-radius: 5px;
 }
-.at-school .at-school-images-wrapper .at-school-images-container .cardholder .card img {
+.main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder .card img {
   width: 300px;
   height: 195px;
   border-radius: 5px;
   transition: all 0.3s ease;
 }
-.at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover {
+.main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover {
   margin-right: 0px;
   z-index: 100;
 }
-.at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover .card {
+.main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover .card {
   background-color: transparent;
   transform: rotateY(0deg);
   box-shadow: 0px 0px 36px 2px rgba(0, 0, 0, 0.25);
@@ -298,41 +323,658 @@ body {
   width: 400px;
   height: 295px;
 }
-.at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover img {
+.main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover img {
   width: 400px;
   height: 295px;
 }
-.at-school .at-school-images-wrapper .at-school-images-container:first-child {
+.main-content .projects .at-school .at-school-images-wrapper .at-school-images-container:first-child {
   margin-right: 0px;
 }
+.main-content .talks .talk-section {
+  text-align: center;
+  font-size: 30px;
+}
+.main-content .talks .talk-section .talk-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 30px;
+  align-items: stretch;
+}
+.main-content .talks .talk-section .talk-list .card {
+  min-height: 450px;
+  perspective: 1200px;
+}
+.main-content .talks .talk-section .talk-list .card .content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+.main-content .talks .talk-section .talk-list .card .content .front,
+.main-content .talks .talk-section .talk-list .card .content .back {
+  text-align: justify;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: white;
+  font-size: 60px;
+  border-radius: 5px;
+  backface-visibility: hidden;
+}
+.main-content .talks .talk-section .talk-list .card .content .front > div,
+.main-content .talks .talk-section .talk-list .card .content .back > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.main-content .talks .talk-section .talk-list .card .content .front .talk-title {
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 30px;
+}
+.main-content .talks .talk-section .talk-list .card .content .front .talk-time {
+  font-size: 1.1rem;
+  padding: 30px;
+}
+.main-content .talks .talk-section .talk-list .card .content .front .talk-place {
+  font-size: 1.8rem;
+  padding: 0px 30px;
+}
+.main-content .talks .talk-section .talk-list .card .content .front .talk-place a {
+  color: inherit;
+  text-decoration: none;
+}
+.main-content .talks .talk-section .talk-list .card .content .back {
+  background: #03446a;
+  color: white;
+  transform: rotateY(180deg);
+}
+.main-content .talks .talk-section .talk-list .card .content .back .back-container {
+  height: 100%;
+}
+.main-content .talks .talk-section .talk-list .card .content .back .talk-details {
+  font-size: 1.3rem;
+  border-bottom: 1px solid white;
+  height: 50%;
+}
+.main-content .talks .talk-section .talk-list .card .content .back .talk-details > div {
+  padding: 30px;
+}
+.main-content .talks .talk-section .talk-list .card .content .back .talk-place-description {
+  font-size: 1.3rem;
+  padding: 30px;
+}
+.main-content .talks .talk-section .talk-list .card .content .back .talk-place-description a {
+  color: inherit;
+}
+.main-content .talks .talk-section .talk-list .card:hover .content {
+  transform: rotateY(180deg);
+  transition: transform 0.5s;
+}
+.main-content .contact-section {
+  display: flex;
+  flex-direction: row;
+  padding-top: 30px;
+  text-align: justify;
+}
+.main-content .contact-section .map .mapboxgl-canvas {
+  position: relative !important;
+}
+.main-content .contact-section .contact-form-container {
+  flex-grow: 1;
+  background: #454f4f;
+  color: white;
+  padding: 10px 30px;
+}
+.main-content .contact-section .contact-form-container .contact-form .title {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+.main-content .contact-section .contact-form-container .contact-form .form {
+  border-bottom: 1px solid white;
+}
+.main-content .contact-section .contact-form-container .contact-form .form input,
+.main-content .contact-section .contact-form-container .contact-form .form textarea {
+  width: calc(100% - 16px);
+  margin: 12px 0px;
+  background: #394141;
+  padding: 8px;
+  border: none;
+  color: inherit !important;
+  box-shadow: none;
+  outline: 0 !important;
+}
+.main-content .contact-section .contact-form-container .contact-form .form input:focus,
+.main-content .contact-section .contact-form-container .contact-form .form textarea:focus {
+  color: inherit;
+}
+.main-content .contact-section .contact-form-container .contact-form .form button {
+  margin-top: 10px;
+  background-color: white;
+  padding: 5px 30px;
+  color: #454f4f;
+  border: none;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+.main-content .contact-section .contact-form-container .contact-form .form button:focus {
+  outline: 0;
+}
+.main-content .contact-section .contact-form-container .contact-form .form button:hover {
+  background-color: #f0f0f0;
+}
+.main-content .contact-section .contact-form-container .contact-form .direct-contact .direct-contact-detail {
+  color: #8e9699;
+  font-size: 1rem;
+}
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
+@media only screen and (max-width: 370px) {
+  .navbar .navbar-left img {
+    margin-top: 10px;
+    margin-left: 20px;
+    height: 40px;
+    width: 40px;
   }
-  40% {
-    transform: translateY(-30px);
+  .navbar .navbar-right-container .navbar-right {
+    margin-right: 20px;
+    margin-top: 10px;
   }
-  60% {
-    transform: translateY(-15px);
+  .navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .twitter-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .github-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .stackoverflow-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .linkedin-logo {
+    margin-top: 10px;
+    height: 30px;
+    width: 30px;
+    font-size: 15px;
+  }
+  .navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .twitter-logo {
+    margin-top: 20px;
+  }
+
+  .landing .landing-content {
+    padding: 80px 10px;
+  }
+  .landing .landing-content .landing-content-subtitle {
+    font-size: 1rem;
+  }
+  .landing .landing-content .landing-content-subtitle-dummy {
+    margin-top: 12px;
+  }
+  .landing .landing-content .landing-content-description {
+    font-size: 1.4rem;
+    text-align: left;
+    width: 95%;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+  .main-content .main-content-intro {
+    font-size: 1.8rem;
+    margin-top: 20px;
+  }
+  .main-content .section-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .main-content .section-details {
+    font-size: 1.1rem;
+  }
+  .main-content .projects .emojifier {
+    flex-direction: column;
+  }
+  .main-content .projects .emojifier .emojifier-description {
+    width: 100%;
+  }
+  .main-content .projects .at-school {
+    flex-direction: column-reverse;
+  }
+  .main-content .projects .at-school .at-school-description {
+    width: 100%;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper {
+    width: 100%;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container {
+    height: 280px;
+    margin-top: 20px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder {
+    margin-right: -180px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder .card {
+    width: 220px;
+    height: 115px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder .card img {
+    width: 220px;
+    height: 115px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover {
+    margin-right: 0px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover .card {
+    width: 240px;
+    height: 135px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover img {
+    width: 240px;
+    height: 135px;
   }
 }
-.fade-enter {
-  opacity: 0.01;
-}
+@media only screen and (min-width: 370px) {
+  .navbar .navbar-left img {
+    margin-top: 10px;
+    margin-left: 20px;
+    height: 40px;
+    width: 40px;
+  }
+  .navbar .navbar-right-container .navbar-right {
+    margin-right: 20px;
+    margin-top: 10px;
+  }
+  .navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .twitter-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .github-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .stackoverflow-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .linkedin-logo {
+    margin-top: 10px;
+    height: 30px;
+    width: 30px;
+    font-size: 15px;
+  }
+  .navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .twitter-logo {
+    margin-top: 20px;
+  }
 
-.fade-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
+  .landing .landing-content {
+    padding: 80px 10px;
+  }
+  .landing .landing-content .landing-content-subtitle {
+    font-size: 1rem;
+  }
+  .landing .landing-content .landing-content-subtitle-dummy {
+    margin-top: 12px;
+  }
+  .landing .landing-content .landing-content-description {
+    font-size: 1.4rem;
+    text-align: left;
+    width: 95%;
+  }
 
-.fade-exit {
-  opacity: 1;
+  .main-content {
+    padding: 10px;
+  }
+  .main-content .main-content-intro {
+    font-size: 1.8rem;
+    margin-top: 20px;
+  }
+  .main-content .section-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .main-content .section-details {
+    font-size: 1.1rem;
+  }
+  .main-content .projects .emojifier {
+    flex-direction: column;
+  }
+  .main-content .projects .emojifier .emojifier-description {
+    width: 100%;
+  }
+  .main-content .projects .at-school {
+    flex-direction: column-reverse;
+  }
+  .main-content .projects .at-school .at-school-description {
+    width: 100%;
+    flex: 1;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper {
+    width: 100%;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container {
+    height: 280px;
+    margin-top: 20px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder {
+    margin-right: -180px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder .card {
+    width: 220px;
+    height: 115px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder .card img {
+    width: 220px;
+    height: 115px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover {
+    margin-right: 0px;
+    z-index: 100;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover .card {
+    width: 240px;
+    height: 135px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover img {
+    width: 240px;
+    height: 135px;
+  }
+  .main-content .contact-section {
+    flex-direction: column;
+  }
 }
+@media only screen and (min-width: 600px) {
+  .navbar .navbar-left img {
+    margin-top: 10px;
+    margin-left: 20px;
+    height: 40px;
+    width: 40px;
+  }
+  .navbar .navbar-right-container .navbar-right {
+    margin-right: 20px;
+    margin-top: 10px;
+  }
+  .navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .twitter-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .github-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .stackoverflow-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .linkedin-logo {
+    margin-top: 10px;
+    height: 30px;
+    width: 30px;
+    font-size: 15px;
+  }
+  .navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .twitter-logo {
+    margin-top: 20px;
+  }
 
-.fade-exit-active {
-  opacity: 0.01;
-  transition: opacity 500ms ease-in;
+  .landing .landing-content {
+    padding: 80px 10px;
+  }
+  .landing .landing-content .landing-content-subtitle {
+    font-size: 1rem;
+  }
+  .landing .landing-content .landing-content-subtitle-dummy {
+    margin-top: 12px;
+  }
+  .landing .landing-content .landing-content-description {
+    font-size: 1.4rem;
+    text-align: left;
+    width: 95%;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+  .main-content .main-content-intro {
+    font-size: 1.8rem;
+    margin-top: 20px;
+  }
+  .main-content .section-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .main-content .section-details {
+    font-size: 1.2rem;
+  }
+  .main-content .projects .emojifier {
+    display: flex;
+    flex-direction: column;
+  }
+  .main-content .projects .emojifier .emojifier-description {
+    width: 100%;
+  }
+  .main-content .projects .at-school {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .main-content .projects .at-school .at-school-description {
+    width: 100%;
+    flex: 1;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper {
+    width: 100%;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container {
+    height: 280px;
+    margin-top: 20px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder {
+    margin-right: -180px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder .card {
+    width: 220px;
+    height: 115px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder .card img {
+    width: 220px;
+    height: 115px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover {
+    margin-right: 0px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover .card {
+    width: 240px;
+    height: 135px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover img {
+    width: 240px;
+    height: 135px;
+  }
+  .main-content .contact-section {
+    flex-direction: row;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .navbar .navbar-left img {
+    margin-top: 20px;
+    margin-left: 30px;
+    height: 50px;
+    width: 50px;
+  }
+  .navbar .navbar-right-container .navbar-right {
+    margin-right: 30px;
+    margin-top: 20px;
+  }
+  .navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-current-position {
+    margin-right: 3px;
+  }
+  .navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .twitter-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .github-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .stackoverflow-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .linkedin-logo {
+    margin-top: 10px;
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+  }
+  .navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .twitter-logo {
+    margin-top: 20px;
+  }
+
+  .landing .landing-content {
+    padding: 80px 120px;
+  }
+  .landing .landing-content .landing-content-subtitle {
+    font-size: 1.1rem;
+  }
+  .landing .landing-content .landing-content-subtitle-dummy {
+    margin-top: 14px;
+  }
+  .landing .landing-content .landing-content-description {
+    font-size: 1.6rem;
+    text-align: left;
+    width: 95%;
+  }
+
+  .main-content {
+    padding: 40px;
+  }
+  .main-content .main-content-intro {
+    font-size: 1.8rem;
+    margin-top: 20px;
+  }
+  .main-content .section-title {
+    font-size: 2.5rem;
+    margin-top: 1.3rem;
+    margin-bottom: 1.6rem;
+    font-weight: 550;
+  }
+  .main-content .section-details {
+    font-size: 1.3rem;
+  }
+  .main-content .projects .emojifier {
+    flex-direction: row;
+  }
+  .main-content .projects .emojifier .emojifier-description {
+    width: 100%;
+  }
+  .main-content .projects .at-school {
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+  }
+  .main-content .projects .at-school .at-school-description {
+    flex: 0.5;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper {
+    width: 100%;
+    flex: 0.5;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container {
+    height: 280px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder {
+    margin-right: -240px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder .card {
+    width: 290px;
+    height: 180px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder .card img {
+    width: 290px;
+    height: 180px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover .card {
+    width: 450px;
+    height: 340px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover img {
+    width: 450px;
+    height: 340px;
+  }
+  .main-content .contact-section {
+    flex-direction: row;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .navbar .navbar-left img {
+    margin-top: 20px;
+    margin-left: 30px;
+    height: 50px;
+    width: 50px;
+  }
+  .navbar .navbar-right-container .navbar-right {
+    margin-right: 30px;
+    margin-top: 20px;
+  }
+  .navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-current-position {
+    margin-right: 3px;
+  }
+  .navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .twitter-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .github-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .stackoverflow-logo,
+.navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .linkedin-logo {
+    margin-top: 10px;
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+  }
+  .navbar .navbar-right-container .navbar-right .position-indicator .position-indicator-burger-menu .twitter-logo {
+    margin-top: 20px;
+  }
+
+  .landing .landing-content {
+    padding: 80px 130px;
+  }
+  .landing .landing-content .landing-content-subtitle {
+    font-size: 1.2rem;
+  }
+  .landing .landing-content .landing-content-subtitle-dummy {
+    margin-top: 18px;
+  }
+  .landing .landing-content .landing-content-description {
+    font-size: 1.8rem;
+    text-align: left;
+    width: 85%;
+  }
+
+  .main-content {
+    padding: 40px;
+  }
+  .main-content .main-content-intro {
+    font-size: 1.8rem;
+    margin-top: 20px;
+  }
+  .main-content .section-title {
+    font-size: 2.5rem;
+    margin-top: 1.3rem;
+    margin-bottom: 1.6rem;
+    font-weight: 550;
+  }
+  .main-content .section-details {
+    font-size: 1.3rem;
+  }
+  .main-content .projects .emojifier {
+    flex-direction: row;
+  }
+  .main-content .projects .emojifier .emojifier-description {
+    width: 100%;
+  }
+  .main-content .projects .at-school {
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+  }
+  .main-content .projects .at-school .at-school-description {
+    flex: 0.5;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper {
+    width: 100%;
+    flex: 0.5;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container {
+    height: 280px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder {
+    margin-right: -240px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder .card {
+    width: 290px;
+    height: 180px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder .card img {
+    width: 290px;
+    height: 180px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover .card {
+    width: 450px;
+    height: 340px;
+  }
+  .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover img {
+    width: 450px;
+    height: 340px;
+  }
+  .main-content .contact-section {
+    flex-direction: row;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

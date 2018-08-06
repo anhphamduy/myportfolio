@@ -2,395 +2,1176 @@
 
 body {
   font-family: "Open Sans", sans-serif;
+  overflow-x: hidden;
 }
 
 .navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
   font-size: 20px;
   background-color: rgba(255, 255, 255, 0);
-  color: black;
+  color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px 70px 15px 70px;
   transition: background-color 0.2s ease-in-out;
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-  }
-
   .navbar-left {
-    display: flex;
-    flex-direction: row;
+    img {
+      width: 60px;
+      height: 60px;
+      filter: grayscale(70%);
+      border-radius: 50%;
+      margin-top: 30px;
+      margin-left: 50px;
+      transition: all 0.3s ease;
+      &:hover {
+        box-shadow: 0px 0px 10px 0.5px rgba(235, 235, 235, 0.43);
+      }
+    }
   }
 
   .navbar-right {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-right: 50px;
 
-    div {
-      margin-left: 12px;
+    .position-indicator {
+      display: flex;
+      flex-direction: row;
+      .position-indicator-current-position {
+        font-size: 12px;
+        font-family: "Prompt";
+        font-weight: 300;
+        font-style: normal;
+        line-height: 20px;
+        margin-right: 8px;
+      }
+
+      .position-indicator-burger-menu {
+        .burger-icon {
+          width: 25px;
+          height: 1px;
+          background-color: white;
+          margin: 4px 0;
+          margin-left: auto;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .burger-icon-dummy {
+          width: 30px;
+          height: 0px;
+        }
+
+        .current-icon {
+          background-color: #f6c4ce !important;
+          width: 30px;
+        }
+
+        .burger-icon:hover {
+          width: 30px;
+        }
+
+        .twitter-logo,
+        .github-logo,
+        .stackoverflow-logo,
+        .linkedin-logo {
+          margin-top: 20px;
+          font-size: 30px;
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          color: #aaa;
+          background-color: rgba(255, 255, 255, 0.09);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 1);
+            box-shadow: 0px 0px 10px 0.5px rgba(235, 235, 235, 0.43);
+
+            color: black;
+          }
+        }
+
+        .twitter-logo {
+          margin-top: 45px;
+        }
+      }
+    }
+    .on-white {
+      color: #000;
+      .burger-icon {
+        width: 25px;
+        height: 1px;
+        background-color: black !important;
+        margin: 4px 0;
+        margin-left: auto;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .current-icon {
+        background-color: #f6c4ce !important;
+        width: 30px;
+      }
     }
   }
 }
 
 .landing {
-  position: absolute;
-  top: 0;
   z-index: -1;
-  height: 100vh;
   width: 100%;
-  background-image: url("/landing.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 100vh;
+  min-height: 500px;
+  background-color: #191c1e;
+  filter: grayscale(70%);
+  color: white;
+  font-size: 2.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
-  font-size: 30px;
+  text-align: justify;
 
   i {
     font-size: 40px;
     margin-bottom: 15px;
     animation: bounce 3s infinite;
-    opacity: 0;
     transition: opacity 0.3s ease-in-out;
+    margin-top: 100px;
   }
 
-  .landing-content-details {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+  .landing-content {
+    padding: 200px 100px;
+    .landing-content-subtitle {
+      color: rgba(255, 255, 255, 0.54) !important;
+      font-style: italic;
+      font-size: 1.3rem;
+    }
+    .landing-content-subtitle-dummy {
+      margin-top: 16px;
+      width: 50px;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.54);
+    }
+
+    .landing-content-description {
+      width: 50%;
+    }
+
+    .Typist {
+      margin-top: 30px;
+      .Cursor--blinking {
+        margin-left: -8px;
+      }
+    }
   }
 
-  .show {
-    opacity: 1;
+  .not-show {
+    opacity: 0;
   }
 }
 
-.emojifier {
-  display: flex;
-  flex-direction: row-reverse;
-  height: 100vh;
-  width: 100%;
-  align-items: center;
-  .emoji-project-container {
-    flex: 0.5;
-    .emoji-project {
-      animation: bigger 1s linear;
-      animation-fill-mode: forwards;
-      transform: translate(0%, 0%);
-      .emoji-cont {
-        width: 25%;
-        height: 25%;
+.main-content {
+  padding: 50px;
+  .main-content-intro {
+    text-align: left;
+    font-size: 3rem;
+    border-bottom: 0.8px solid rgba(0, 0, 0, 0.6);
+  }
+  .section-title {
+    font-size: 2.5rem;
+    margin-top: 1.3rem;
+    margin-bottom: 1.6rem;
+    font-weight: 550;
+  }
 
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(0%, 0%);
-        animation: emoji-bounce 750ms infinite;
-        .emoji {
-          position: absolute;
+  .section-details {
+    font-size: 1.3rem;
+    line-height: 2rem;
+    margin-bottom: 1.6rem;
+  }
+  .projects {
+    .emojifier {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-items: center;
+      .emoji-project-container {
+        width: 100%;
+        flex: 0.5;
+        .emoji-project {
+          animation: bigger 1s linear;
+          animation-fill-mode: forwards;
           transform: translate(0%, 0%);
+          .emoji-cont {
+            width: 25%;
+            height: 25%;
 
-          top: 50%;
-          left: 50%;
-        }
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(0%, 0%);
+            animation: emoji-bounce 750ms infinite;
+            .emoji {
+              position: absolute;
+              transform: translate(0%, 0%);
 
-        .emoji::after {
-          font-size: 12.5vmin;
-          content: "😮";
+              top: 50%;
+              left: 50%;
+            }
 
-          position: absolute;
-          top: 0;
-          left: 0;
+            .emoji::after {
+              font-size: 12.5vmin;
+              content: "😮";
 
-          animation: rotate-emoji 750ms linear infinite,
-            change-emoji 6s -375ms linear infinite;
+              position: absolute;
+              top: 0;
+              left: 0;
+
+              animation: rotate-emoji 750ms linear infinite,
+                change-emoji 6s -375ms linear infinite;
+            }
+          }
+          .shadow {
+            width: 25%;
+            height: 5px;
+            background: #263238;
+
+            transform: translate(-50%, -50%);
+
+            position: absolute;
+            top: 85%;
+            left: 50%;
+
+            animation: shadow-bounce 750ms linear infinite;
+          }
         }
       }
-      .shadow {
-        width: 25%;
-        height: 5px;
-        background: #263238;
+      .emojifier-description {
+        flex: 0.5;
+        text-align: justify;
+        width: 50%;
 
-        transform: translate(-50%, -50%);
-
-        position: absolute;
-        top: 85%;
-        left: 50%;
-
-        animation: shadow-bounce 750ms linear infinite;
-      }
-      @keyframes change-emoji {
-        0% {
-          content: "😮";
-        }
-        12.5% {
-          content: "😵";
-        }
-        25% {
-          content: "😳";
-        }
-        37.5% {
-          content: "🤣";
-        }
-        50% {
-          content: "😇";
-        }
-        62.5% {
-          content: "😎";
-        }
-        75% {
-          content: "🙄";
-        }
-        87.5% {
-          content: "🤢";
-        }
-        100% {
-          content: "😮";
-        }
-      }
-
-      @keyframes rotate-emoji {
-        0% {
-          transform: translate(-50%, -50%) rotate(0deg);
-        }
-        100% {
-          transform: translate(-50%, -50%) rotate(360deg);
-        }
-      }
-
-      @keyframes emoji-bounce {
-        0% {
-          transform: translate(-50%, 50%) scale(1.25, 0.75);
-          animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
-        }
-        50% {
-          transform: translate(-50%, -150%) scale(1, 1);
-          animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
-        }
-        100% {
-          transform: translate(-50%, 50%) scale(1.25, 0.75);
-        }
-      }
-
-      @keyframes shadow-bounce {
-        0% {
-          opacity: 0.25;
-          transform: translate(-50%, -50%) scaleX(1.5);
-          animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
-        }
-        50% {
-          opacity: 1;
-          transform: translate(-50%, -50%) scaleX(0.75);
-          animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
-        }
-        100% {
-          opacity: 0.25;
-          transform: translate(-50%, -50%) scaleX(1.5);
-        }
-      }
-
-      @keyframes bigger {
-        0% {
-          height: 0vmin;
-        }
-        50% {
-          height: 25vmin;
-        }
-        100% {
-          height: 50vmin;
+        a {
+          height: 5px;
+          border-radius: 3px;
+          text-decoration: none;
+          i {
+            margin-right: 6px;
+          }
+          color: white;
+          padding: 5px 10px;
+          font-size: 1.4rem;
+          background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+          background-blend-mode: multiply;
+          border-width: 0px;
         }
       }
     }
-  }
-  .emojifier-description {
-    flex: 0.5;
-    text-align: justify;
-    padding: 50px;
-    width: 75%;
 
-    .emojifier-description-title {
-      font-size: 2.5rem;
-      margin-bottom: 1.3rem;
-      font-weight: 550;
-    }
-
-    .emojifier-description-details {
-      font-size: 1.3rem;
-      line-height: 2rem;
-      margin-bottom: 1.6rem;
-    }
-
-    a {
-      height: 5px;
-      border-radius: 3px;
-      text-decoration: none;
-      i {
-        margin-right: 6px;
-      }
-      color: white;
-      padding: 5px 10px;
-      font-size: 1.4rem;
-      background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
-      background-blend-mode: multiply;
-      border-width: 0px;
-    }
-  }
-}
-
-.at-school {
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex: 0.4;
-
-  .at-school-description {
-    flex: 0.5;
-    text-align: justify;
-    padding: 50px;
-    width: 75%;
-
-    .at-school-description-title {
-      font-size: 2.5rem;
-      margin-bottom: 1.3rem;
-      font-weight: 550;
-    }
-
-    .at-school-description-details {
-      font-size: 1.3rem;
-      line-height: 2rem;
-      margin-bottom: 1.6rem;
-    }
-
-    a {
-      height: 5px;
-      border-radius: 3px;
-      text-decoration: none;
-      i {
-        margin-right: 6px;
-      }
-      color: white;
-      padding: 5px 10px;
-      font-size: 1.4rem;
-      background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
-      background-blend-mode: multiply;
-      border-width: 0px;
-    }
-  }
-
-  .at-school-images-wrapper {
-    padding: 0px 20px;
-    flex: 0.6;
-    .at-school-images-container {
+    .at-school {
       display: flex;
       flex-direction: row;
       align-items: center;
+      flex: 0.4;
 
-      .cardholder {
-        perspective: 800px;
-        margin-right: -250px;
-        transition: all 0.3s linear;
-        .card {
-          background-color: transparent;
-          transform: rotateY(50deg);
-          -webkit-box-shadow: -6px 5px 13px 2px rgba(0, 0, 0, 0.25);
-          -moz-box-shadow: -6px 5px 13px 2px rgba(0, 0, 0, 0.25);
-          box-shadow: -6px 5px 13px 2px rgba(0, 0, 0, 0.25);
-          transition: all 0.3s ease;
-          color: transparent;
-          width: 300px;
-          height: 195px;
-          border-radius: 5px;
+      .at-school-description {
+        flex: 0.5;
+        text-align: justify;
+        width: 75%;
 
-          img {
-            width: 300px;
-            height: 195px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-          }
+        .at-school-description-title {
+          font-size: 2.5rem;
+          margin-bottom: 1.3rem;
+          font-weight: 550;
         }
-        &:hover {
-          margin-right: 0px;
-          z-index: 100;
 
-          .card {
-            background-color: transparent;
-            transform: rotateY(0deg);
-            box-shadow: 0px 0px 36px 2px rgba(0, 0, 0, 0.25);
-            color: black;
-            width: 400px;
-            height: 295px;
-          }
+        .at-school-description-details {
+          font-size: 1.3rem;
+          line-height: 2rem;
+          margin-bottom: 1.6rem;
+        }
 
-          img {
-            width: 400px;
-            height: 295px;
+        a {
+          height: 5px;
+          border-radius: 3px;
+          text-decoration: none;
+          i {
+            margin-right: 6px;
           }
+          color: white;
+          padding: 5px 10px;
+          font-size: 1.4rem;
+          background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+          background-blend-mode: multiply;
+          border-width: 0px;
         }
       }
 
-      &:first-child {
-        margin-right: 0px;
+      .at-school-images-wrapper {
+        flex: 0.6;
+        .at-school-images-container {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          height: 500px;
+          width: 100%;
+
+          .cardholder {
+            perspective: 800px;
+            margin-right: -250px;
+            transition: all 0.3s linear;
+            .card {
+              background-color: transparent;
+              transform: rotateY(50deg);
+              -webkit-box-shadow: -6px 5px 13px 2px rgba(0, 0, 0, 0.25);
+              -moz-box-shadow: -6px 5px 13px 2px rgba(0, 0, 0, 0.25);
+              box-shadow: -6px 5px 13px 2px rgba(0, 0, 0, 0.25);
+              transition: all 0.3s ease;
+              color: transparent;
+              width: 300px;
+              height: 195px;
+              border-radius: 5px;
+
+              img {
+                width: 300px;
+                height: 195px;
+                border-radius: 5px;
+                transition: all 0.3s ease;
+              }
+            }
+            &:hover {
+              margin-right: 0px;
+              z-index: 100;
+
+              .card {
+                background-color: transparent;
+                transform: rotateY(0deg);
+                box-shadow: 0px 0px 36px 2px rgba(0, 0, 0, 0.25);
+                color: black;
+                width: 400px;
+                height: 295px;
+              }
+
+              img {
+                width: 400px;
+                height: 295px;
+              }
+            }
+          }
+
+          &:first-child {
+            margin-right: 0px;
+          }
+        }
       }
     }
   }
-}
+  .talks {
+    .talk-section {
+      text-align: center;
+      font-size: 30px;
 
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-30px);
-  }
-  60% {
-    transform: translateY(-15px);
-  }
-}
+      .talk-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        grid-gap: 30px;
+        align-items: stretch;
+        .card {
+          min-height: 450px;
+          perspective: 1200px;
 
-.fade-enter {
-  opacity: 0.01;
-}
-.fade-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-.fade-exit {
-  opacity: 1;
-}
-.fade-exit-active {
-  opacity: 0.01;
-  transition: opacity 500ms ease-in;
+          .content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+            transition: transform 1s;
+            transform-style: preserve-3d;
+
+            .front,
+            .back {
+              text-align: justify;
+              position: absolute;
+              height: 100%;
+              width: 100%;
+              background: white;
+              font-size: 60px;
+              border-radius: 5px;
+              backface-visibility: hidden;
+              & > div {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+              }
+            }
+
+            .front {
+              .talk-title {
+                font-size: 2rem;
+                font-weight: 600;
+                padding: 30px;
+              }
+              .talk-time {
+                font-size: 1.1rem;
+                padding: 30px;
+              }
+              .talk-place {
+                font-size: 1.8rem;
+                padding: 0px 30px;
+                a {
+                  color: inherit;
+                  text-decoration: none;
+                }
+              }
+            }
+
+            .back {
+              background: #03446a;
+              color: white;
+              transform: rotateY(180deg);
+
+              .back-container {
+                height: 100%;
+              }
+
+              .talk-details {
+                font-size: 1.3rem;
+                border-bottom: 1px solid white;
+                height: 50%;
+                & > div {
+                  padding: 30px;
+                }
+              }
+              .talk-place-description {
+                font-size: 1.3rem;
+                padding: 30px;
+                a {
+                  color: inherit;
+                }
+              }
+            }
+          }
+
+          &:hover {
+            .content {
+              transform: rotateY(180deg);
+              transition: transform 0.5s;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .contact-section {
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    text-align: justify;
+
+    .map {
+      .mapboxgl-canvas {
+        position: relative !important;
+      }
+    }
+
+    .contact-form-container {
+      flex-grow: 1;
+      background: #454f4f;
+      color: white;
+      padding: 10px 30px;
+
+      .contact-form {
+        .title {
+          margin-top: 20px;
+          font-size: 1.2rem;
+          margin-bottom: 10px;
+        }
+        .form {
+          border-bottom: 1px solid white;
+          input,
+          textarea {
+            width: calc(100% - 16px);
+            margin: 12px 0px;
+            background: #394141;
+            padding: 8px;
+            border: none;
+            color: inherit !important;
+            box-shadow: none;
+            outline: 0 !important;
+
+            &:focus {
+              color: inherit;
+            }
+          }
+          button {
+            margin-top: 10px;
+            background-color: rgb(255, 255, 255);
+            padding: 5px 30px;
+            color: #454f4f;
+            border: none;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+
+            &:focus {
+              outline: 0;
+            }
+            &:hover {
+              background-color: rgb(240, 240, 240);
+            }
+          }
+        }
+
+        .direct-contact {
+          .direct-contact-detail {
+            color: #8e9699;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
 }
 
 // Galaxy S5 and Iphone 5/SE
 @media only screen and (max-width: 370px) {
+  .navbar {
+    .navbar-left {
+      img {
+        margin-top: 10px;
+        margin-left: 20px;
+        height: 40px;
+        width: 40px;
+      }
+    }
 
-} 
+    .navbar-right-container {
+      .navbar-right {
+        margin-right: 20px;
+        margin-top: 10px;
+        .position-indicator {
+          .position-indicator-burger-menu {
+            .twitter-logo,
+            .github-logo,
+            .stackoverflow-logo,
+            .linkedin-logo {
+              margin-top: 10px;
+              height: 30px;
+              width: 30px;
+              font-size: 15px;
+            }
+
+            .twitter-logo {
+              margin-top: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .landing {
+    .landing-content {
+      padding: 80px 10px;
+      .landing-content-subtitle {
+        font-size: 1rem;
+      }
+      .landing-content-subtitle-dummy {
+        margin-top: 12px;
+      }
+      .landing-content-description {
+        font-size: 1.4rem;
+        text-align: left;
+        width: 95%;
+      }
+    }
+  }
+
+  .main-content {
+    padding: 10px;
+    .main-content-intro {
+      font-size: 1.8rem;
+      margin-top: 20px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .section-details {
+      font-size: 1.1rem;
+    }
+    .projects {
+      .emojifier {
+        flex-direction: column;
+
+        .emojifier-description {
+          width: 100%;
+        }
+      }
+
+      .at-school {
+        flex-direction: column-reverse;
+        .at-school-description {
+          width: 100%;
+        }
+
+        .at-school-images-wrapper {
+          width: 100%;
+
+          .at-school-images-container {
+            height: 280px;
+            margin-top: 20px;
+            .cardholder {
+              margin-right: -180px;
+              .card {
+                width: 220px;
+                height: 115px;
+                img {
+                  width: 220px;
+                  height: 115px;
+                }
+              }
+
+              &:hover {
+                margin-right: 0px;
+
+                .card {
+                  width: 240px;
+                  height: 135px;
+                }
+
+                img {
+                  width: 240px;
+                  height: 135px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 @media only screen and (min-width: 370px) {
+  .navbar {
+    .navbar-left {
+      img {
+        margin-top: 10px;
+        margin-left: 20px;
+        height: 40px;
+        width: 40px;
+      }
+    }
 
-} 
+    .navbar-right-container {
+      .navbar-right {
+        margin-right: 20px;
+        margin-top: 10px;
+        .position-indicator {
+          .position-indicator-burger-menu {
+            .twitter-logo,
+            .github-logo,
+            .stackoverflow-logo,
+            .linkedin-logo {
+              margin-top: 10px;
+              height: 30px;
+              width: 30px;
+              font-size: 15px;
+            }
+
+            .twitter-logo {
+              margin-top: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .landing {
+    .landing-content {
+      padding: 80px 10px;
+      .landing-content-subtitle {
+        font-size: 1rem;
+      }
+      .landing-content-subtitle-dummy {
+        margin-top: 12px;
+      }
+      .landing-content-description {
+        font-size: 1.4rem;
+        text-align: left;
+        width: 95%;
+      }
+    }
+  }
+
+  .main-content {
+    padding: 10px;
+    .main-content-intro {
+      font-size: 1.8rem;
+      margin-top: 20px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .section-details {
+      font-size: 1.1rem;
+    }
+    .projects {
+      .emojifier {
+        flex-direction: column;
+
+        .emojifier-description {
+          width: 100%;
+        }
+      }
+
+      .at-school {
+        flex-direction: column-reverse;
+        .at-school-description {
+          width: 100%;
+          flex: 1;
+        }
+
+        .at-school-images-wrapper {
+          width: 100%;
+
+          .at-school-images-container {
+            height: 280px;
+            margin-top: 20px;
+            .cardholder {
+              margin-right: -180px;
+              .card {
+                width: 220px;
+                height: 115px;
+                img {
+                  width: 220px;
+                  height: 115px;
+                }
+              }
+
+              &:hover {
+                margin-right: 0px;
+                z-index: 100;
+
+                .card {
+                  width: 240px;
+                  height: 135px;
+                }
+
+                img {
+                  width: 240px;
+                  height: 135px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .contact-section {
+      flex-direction: column;
+    }
+  }
+}
 
 @media only screen and (min-width: 600px) {
-  
-} 
+  .navbar {
+    .navbar-left {
+      img {
+        margin-top: 10px;
+        margin-left: 20px;
+        height: 40px;
+        width: 40px;
+      }
+    }
+
+    .navbar-right-container {
+      .navbar-right {
+        margin-right: 20px;
+        margin-top: 10px;
+        .position-indicator {
+          .position-indicator-burger-menu {
+            .twitter-logo,
+            .github-logo,
+            .stackoverflow-logo,
+            .linkedin-logo {
+              margin-top: 10px;
+              height: 30px;
+              width: 30px;
+              font-size: 15px;
+            }
+
+            .twitter-logo {
+              margin-top: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .landing {
+    .landing-content {
+      padding: 80px 10px;
+      .landing-content-subtitle {
+        font-size: 1rem;
+      }
+      .landing-content-subtitle-dummy {
+        margin-top: 12px;
+      }
+      .landing-content-description {
+        font-size: 1.4rem;
+        text-align: left;
+        width: 95%;
+      }
+    }
+  }
+
+  .main-content {
+    padding: 10px;
+    .main-content-intro {
+      font-size: 1.8rem;
+      margin-top: 20px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .section-details {
+      font-size: 1.2rem;
+    }
+    .projects {
+      .emojifier {
+        display: flex;
+        flex-direction: column;
+
+        .emojifier-description {
+          width: 100%;
+        }
+      }
+
+      .at-school {
+        display: flex;
+        flex-direction: column-reverse;
+        .at-school-description {
+          width: 100%;
+          flex: 1;
+        }
+
+        .at-school-images-wrapper {
+          width: 100%;
+
+          .at-school-images-container {
+            height: 280px;
+            margin-top: 20px;
+            .cardholder {
+              margin-right: -180px;
+              .card {
+                width: 220px;
+                height: 115px;
+                img {
+                  width: 220px;
+                  height: 115px;
+                }
+              }
+
+              &:hover {
+                margin-right: 0px;
+
+                .card {
+                  width: 240px;
+                  height: 135px;
+                }
+
+                img {
+                  width: 240px;
+                  height: 135px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .contact-section {
+      flex-direction: row;
+    }
+  }
+}
 
 @media only screen and (min-width: 768px) {
-  
-} 
+  .navbar {
+    .navbar-left {
+      img {
+        margin-top: 20px;
+        margin-left: 30px;
+        height: 50px;
+        width: 50px;
+      }
+    }
+
+    .navbar-right-container {
+      .navbar-right {
+        margin-right: 30px;
+        margin-top: 20px;
+        .position-indicator {
+          .position-indicator-current-position {
+            margin-right: 3px;
+          }
+          .position-indicator-burger-menu {
+            .twitter-logo,
+            .github-logo,
+            .stackoverflow-logo,
+            .linkedin-logo {
+              margin-top: 10px;
+              height: 40px;
+              width: 40px;
+              font-size: 20px;
+            }
+
+            .twitter-logo {
+              margin-top: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .landing {
+    .landing-content {
+      padding: 80px 120px;
+      .landing-content-subtitle {
+        font-size: 1.1rem;
+      }
+      .landing-content-subtitle-dummy {
+        margin-top: 14px;
+      }
+      .landing-content-description {
+        font-size: 1.6rem;
+        text-align: left;
+        width: 95%;
+      }
+    }
+  }
+
+  .main-content {
+    padding: 40px;
+    .main-content-intro {
+      font-size: 1.8rem;
+      margin-top: 20px;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      margin-top: 1.3rem;
+      margin-bottom: 1.6rem;
+      font-weight: 550;
+    }
+
+    .section-details {
+      font-size: 1.3rem;
+    }
+    .projects {
+      .emojifier {
+        flex-direction: row;
+
+        .emojifier-description {
+          width: 100%;
+        }
+      }
+
+      .at-school {
+        display: flex;
+        flex-direction: row;
+        margin-top: 60px;
+        .at-school-description {
+          flex: 0.5;
+        }
+
+        .at-school-images-wrapper {
+          width: 100%;
+          flex: 0.5;
+
+          .at-school-images-container {
+            height: 280px;
+            margin-top: 20px;
+            margin-left: 20px;
+            .cardholder {
+              margin-right: -240px;
+              .card {
+                width: 290px;
+                height: 180px;
+                img {
+                  width: 290px;
+                  height: 180px;
+                }
+              }
+
+              &:hover {
+                .card {
+                  width: 450px;
+                  height: 340px;
+                }
+
+                img {
+                  width: 450px;
+                  height: 340px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .contact-section {
+      flex-direction: row;
+    }
+  }
+}
 
 @media only screen and (min-width: 992px) {
-  
-} 
+  .navbar {
+    .navbar-left {
+      img {
+        margin-top: 20px;
+        margin-left: 30px;
+        height: 50px;
+        width: 50px;
+      }
+    }
+
+    .navbar-right-container {
+      .navbar-right {
+        margin-right: 30px;
+        margin-top: 20px;
+        .position-indicator {
+          .position-indicator-current-position {
+            margin-right: 3px;
+          }
+          .position-indicator-burger-menu {
+            .twitter-logo,
+            .github-logo,
+            .stackoverflow-logo,
+            .linkedin-logo {
+              margin-top: 10px;
+              height: 40px;
+              width: 40px;
+              font-size: 20px;
+            }
+
+            .twitter-logo {
+              margin-top: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .landing {
+    .landing-content {
+      padding: 80px 130px;
+      .landing-content-subtitle {
+        font-size: 1.2rem;
+      }
+      .landing-content-subtitle-dummy {
+        margin-top: 18px;
+      }
+      .landing-content-description {
+        font-size: 1.8rem;
+        text-align: left;
+        width: 85%;
+      }
+    }
+  }
+
+  .main-content {
+    padding: 40px;
+    .main-content-intro {
+      font-size: 1.8rem;
+      margin-top: 20px;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      margin-top: 1.3rem;
+      margin-bottom: 1.6rem;
+      font-weight: 550;
+    }
+
+    .section-details {
+      font-size: 1.3rem;
+    }
+    .projects {
+      .emojifier {
+        flex-direction: row;
+
+        .emojifier-description {
+          width: 100%;
+        }
+      }
+
+      .at-school {
+        display: flex;
+        flex-direction: row;
+        margin-top: 60px;
+        .at-school-description {
+          flex: 0.5;
+        }
+
+        .at-school-images-wrapper {
+          width: 100%;
+          flex: 0.5;
+
+          .at-school-images-container {
+            height: 280px;
+            margin-top: 20px;
+            margin-left: 20px;
+            .cardholder {
+              margin-right: -240px;
+              .card {
+                width: 290px;
+                height: 180px;
+                img {
+                  width: 290px;
+                  height: 180px;
+                }
+              }
+
+              &:hover {
+                .card {
+                  width: 450px;
+                  height: 340px;
+                }
+
+                img {
+                  width: 450px;
+                  height: 340px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .contact-section {
+      flex-direction: row;
+    }
+  }
+}
 
 @media only screen and (min-width: 1200px) {
-  
 }

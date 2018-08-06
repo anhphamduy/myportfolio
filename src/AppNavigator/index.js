@@ -1,161 +1,97 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Contact from "./Contact";
 import Landing from "./Landing";
+import Navbar from "./Navbar";
+import Projects from "./Projects";
+import Talks from "./Talks";
 import "./styles.css";
-import { CSSTransition } from "react-transition-group";
-import Emojifier from "./Emojifier";
-import AtSchool from "./AtSchool";
 
 export default class AppNavigator extends React.Component {
   state = {
-    onLanding: true,
+    current: 0,
+    currentDummy: 0,
     onContent: false,
-    onEmojifier: false,
-    onAtSchool: false,
-    onChanging: false,
-    onReading: false
+    onNavTransition: false
   };
 
-  // componentDidMount() {
-  //   // window.addEventListener("resize", this.updateWindowDimensions);
-  //   // window.addEventListener("scroll", this.scrollTrack);
-  //   window.addEventListener("touchstart", this.handleTouchStart, false);
-  //   // this.updateWindowDimensions();
-  // }
+  componentDidMount() {
+    window.addEventListener("scroll", this.scrollTrack);
+  }
 
-  // handleTouchStart = e => {
-  //   this.setState({ xDown: e.touches[0].clientX, yDown: e.touches[0].clientY });
-  // };
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.scrollTrack);
+  }
 
-  // componentWillUnmount() {
-  //   // window.removeEventListener("resize", this.updateWindowDimensions);
-  //   // window.removeEventListener("scroll", this.scrollTrack);
-  // }
+  scrollTrack = () => {
+    if (window.scrollY < 10 && this.state.current !== 0) {
+      this.setState({
+        onNavTransition: true,
+        currentDummy: 0
+      });
+    }
+    if (
+      this.projectsRef.getBoundingClientRect().top < 200 &&
+      this.state.current !== 1 &&
+      this.projectsRef.getBoundingClientRect().top > 0
+    ) {
+      this.setState({
+        onNavTransition: true,
+        currentDummy: 1
+      });
+    } else if (
+      this.talkRef.getBoundingClientRect().top < 200 &&
+      this.state.current !== 2 &&
+      this.talkRef.getBoundingClientRect().top > 0
+    ) {
+      this.setState({
+        onNavTransition: true,
+        currentDummy: 2
+      });
+    } else if (
+      this.contactRef.getBoundingClientRect().top < 500 &&
+      this.state.current !== 3 &&
+      this.contactRef.getBoundingClientRect().top > 0
+    ) {
+      this.setState({
+        onNavTransition: true,
+        currentDummy: 3
+      });
+    }
+    if (this.mainContentRef.getBoundingClientRect().top < 30) {
+      this.setState({ onContent: true });
+    } else {
+      this.setState({ onContent: false });
+    }
+  };
 
-  // // updateWindowDimensions = () => {
-  // //   this.setState({ width: window.innerWidth, height: window.innerHeight });
-  // // };
-
-  // scrollChange = e => {
-  //   console.log("here");
-  //   console.log("this");
-  //   if (!this.state.onChanging && !this.state.onReading) {
-  //     this.setState({ onReading: true }, () =>
-  //       setTimeout(() => this.setState({ onReading: false }), 1500)
-  //     );
-  //     if (e.deltaY > 0) {
-  //       // mouse down
-  //       this.handleGoDown();
-  //     } else if (e.deltaY < -0) {
-  //       this.handleGoUp();
-  //     }
-  //   }
-  // };
-
-  // handleGoDown = () => {
-  //   console.log("here on handleGoDown");
-  //   if (!this.state.onContent) {
-  //     this.setState({ onChanging: true }, () => {
-  //       console.log(this.state);
-  //       if (this.state.onLanding) {
-  //         this.setState({ onLanding: false, onEmojifier: true });
-  //       } else if (this.state.onEmojifier) {
-  //         this.setState({ onEmojifier: false, onAtSchool: true });
-  //       } else if (this.state.onAtSchool) {
-  //         console.log("here");
-  //         this.setState({ onAtSchool: false, onContent: true });
-  //       }
-  //     });
-  //   }
-  // };
-
-  // handleGoUp = () => {
-  //   if (!this.state.onLanding) {
-  //     this.setState({ onChanging: true }, () => {
-  //       if (this.state.onContent) {
-  //         this.setState({ onAtSchool: true, onContent: false });
-  //       } else if (this.state.onAtSchool) {
-  //         this.setState({ onEmojifier: true, onAtSchool: false });
-  //       } else if (this.state.onEmojifier) {
-  //         this.setState({ onLanding: true, onEmojifier: false });
-  //       }
-  //     });
-  //   }
-  // };
-
-  // onTouch = e => {
-  //   if (!this.state.onReading && !this.state.onChanging) {
-  //     if (!this.state.xDown || !this.state.yDown) {
-  //       return;
-  //     }
-
-  //     const xUp = e.touches[0].clientX;
-  //     const yUp = e.touches[0].clientY;
-
-  //     const xDiff = this.state.xDown - xUp;
-  //     const yDiff = this.state.yDown - yUp;
-
-  //     if (Math.abs(xDiff) <= Math.abs(yDiff)) {
-  //       if (yDiff > 0) {
-  //         this.handleGoDown();
-  //       } else {
-  //         this.handleGoUp();
-  //       }
-  //     }
-  //   }
-  // };
+  updateCurrent = current => () => {
+    this.setState({ current }, () => this.setState({ onNavTransition: false }));
+  };
 
   render() {
     return (
       <div onTouchMove={this.onTouch} onWheel={this.scrollChange}>
-        <Navbar />
+        <Navbar
+          current={this.state.current}
+          onContent={this.state.onContent}
+          onTransition={this.state.onNavTransition}
+          updateCurrent={this.updateCurrent(this.state.currentDummy)}
+        />
         <Landing />
-        <Emojifier />
-        <AtSchool />
-        <CSSTransition
-          classNames="fade"
-          timeout={500}
-          in={this.state.onLanding && !this.state.onChanging}
-          unmountOnExit
-          onExited={() => this.setState({ onChanging: false })}
-        >
-          <div ref={ref => (this.landingRef = ref)}>
-            <Navbar />
-            <Landing />
+        <div className="main-content" ref={ref => (this.mainContentRef = ref)}>
+          <div ref={ref => (this.projectsRef = ref)} className="projects">
+            <Projects />
           </div>
-        </CSSTransition>
-        <CSSTransition
-          classNames="fade"
-          timeout={500}
-          in={this.state.onEmojifier && !this.state.onChanging}
-          unmountOnExit
-          onExited={() => this.setState({ onChanging: false })}
-        >
-          <Emojifier />
-        </CSSTransition>
-        <CSSTransition
-          classNames="fade"
-          timeout={500}
-          in={this.state.onAtSchool && !this.state.onChanging}
-          unmountOnExit
-          onExited={() => this.setState({ onChanging: false })}
-        >
-          <AtSchool />
-        </CSSTransition>
-        <CSSTransition
-          classNames="fade"
-          timeout={500}
-          in={this.state.onContent && !this.state.onChanging}
-          unmountOnExit
-          onExited={() => this.setState({ onChanging: false })}
-        >
-          <div
-            style={{
-              height: "100vh",
-              backgroundColor: "blue"
-            }}
-          />
-        </CSSTransition>
+          <div className="talks" ref={ref => (this.talkRef = ref)}>
+            <Talks />
+          </div>
+          <div className="contact" ref={ref => (this.contactRef = ref)}>
+            <Contact />
+          </div>
+        </div>
+        <div style={{ textAlign: "center", marginBottom: "20px" }}>
+          ©2018 Created by Anh Pham
+        </div>
       </div>
     );
   }
