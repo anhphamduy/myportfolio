@@ -193,7 +193,7 @@ body {
 }
 .main-content .projects .emojifier .emoji-project-container .emoji-project .emoji-cont {
   width: 25%;
-  height: 25%;
+  height: 40%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -336,7 +336,7 @@ body {
 }
 .main-content .talks .talk-section .talk-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 30px;
   align-items: stretch;
 }
@@ -565,6 +565,12 @@ body {
   .main-content .projects .at-school .at-school-images-wrapper .at-school-images-container .cardholder:hover img {
     width: 240px;
     height: 135px;
+  }
+  .main-content .contact-section {
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: 30px;
+    text-align: justify;
   }
 }
 @media only screen and (min-width: 370px) {
